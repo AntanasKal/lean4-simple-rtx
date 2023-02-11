@@ -5,4 +5,4 @@ My take of implementing a toy raytracer in Lean4 following [Ray Tracing in One W
 ## Pictures
 
 
-![One Weekend cover recreated, 69m11,019s on 6 threads](./imgs/tutorial-depth-30-samples-240.ppm)
+![](./imgs/tutorial-depth-30-samples-240.png)
