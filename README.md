@@ -6,3 +6,4 @@ My take of implementing a toy raytracer in Lean4 following [Ray Tracing in One W
 
 
 ![](./imgs/tutorial-depth-30-samples-240.png)
+1200x800 resolution, 240 samples per pixel, max 30 bounces per ray, 70 mins on 6 threads on Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz.
