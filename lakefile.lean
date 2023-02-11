@@ -6,38 +6,37 @@ package «one-weekend» {
 }
 
 lean_lib «Vec3» {
-  srcDir := "src"
+  srcDir := "raytracing"
   -- add library configuration options here
 }
-
-lean_lib «Ray» {
-  srcDir := "src"
-  -- add library configuration options here
-}
-
 
 lean_lib «Colour» {
-    srcDir := "src"
+    srcDir := "raytracing"
   -- add library configuration options here
 }
 
-lean_lib «Material» {
-    srcDir := "src/Material"
+lean_lib «Raytracing» {
+  srcDir := "raytracing"
   -- add library configuration options here
 }
 
 lean_lib «Scatter» {
-    srcDir := "src/Material"
+    srcDir := "raytracing"
   -- add library configuration options here
 }
 
 lean_lib «Hittables» {
-    srcDir := "src"
+    srcDir := "raytracing"
   -- add library configuration options here
 }
 
-lean_lib «Generators» {
-    srcDir := "src"
+lean_lib «Camera» {
+  srcDir := "raytracing"
+  -- add library configuration options here
+}
+
+lean_lib «RandUtils» {
+    srcDir := "raytracing"
   -- add library configuration options here
 }
 
