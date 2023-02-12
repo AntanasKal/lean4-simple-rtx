@@ -1,6 +1,7 @@
 # Simple Lean4 Raytracing
 
-My take of implementing a toy raytracer in Lean4 following [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) book. I am not the first one to implement such raytracer in Lean4, this has also been done [here](https://github.com/kmill/lean4-raytracer).
+My take on implementing a toy raytracer in Lean4 following [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) book by Peter Shirley. I am not the first one to implement such raytracer in Lean4, this has also been done [here](https://github.com/kmill/lean4-raytracer).
+
 
 ## Pictures
 
