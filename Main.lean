@@ -149,16 +149,18 @@ def print_picture_multithreaded (world : List hittable) (number_of_threads : Nat
     | 0 => pure ()
     | jj+1 => print_picture_multithreaded world number_of_threads width jj
 
-def num_threads := 6
+def num_threads := 8
 
 def main : IO Unit := do
   let stdout ← IO.getStdout;
   stdout.putStrLn "P3";
   stdout.putStrLn s!"{image_width} {image_height}";
   stdout.putStrLn s!"255"
-  let world ← generate_world
+  let world ← generate_world_final_scene
   (←  IO.getStderr).putStrLn s!"{world.length}"
   print_picture_multithreaded world num_threads (image_width-1) (image_height-1)
+
+
 
 
 

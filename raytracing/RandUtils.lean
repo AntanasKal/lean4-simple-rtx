@@ -57,7 +57,7 @@ def generate_rand_vec3_unit (n : Nat) : IO vec3 :=
     pure v.unit_vector
 
 
-def generate_world : IO (List hittable) :=
+def generate_world_final_scene : IO (List hittable) :=
   do
     let mut world := []
     for a in [0: 22] do
@@ -94,6 +94,51 @@ def generate_world : IO (List hittable) :=
 
     let material3 : material := material.metal (colour.mk 0.7  0.6  0.5) 0.0
     world := world.cons $ hittable.sphere (point3.mk (vec3.mk (4) (1) (0))) 1 material3
+
+    pure world
+
+
+
+def generate_world_another_scene : IO (List hittable) :=
+  do
+    let mut world := []
+    for a in [0: 22] do
+      for b in [0: 22] do
+        let choose_mat ← random_float_unit
+        let center : point3 :=  point3.mk ( vec3.mk (a.toFloat-11+0.9*(← random_float_unit)) 0.2 (b.toFloat-11+0.9*(← random_float_unit)))
+        if (center.coord - (vec3.mk 4 0.2 0)).length > 0.9 then
+          if choose_mat < 0.8 then
+            let rand_colour := colour.mk (← random_float_unit) (← random_float_unit) (← random_float_unit)
+            let albedo := rand_colour * rand_colour
+            let mat := material.lambertian albedo
+            world := world.cons $ hittable.sphere center 0.2 mat
+            
+          else if choose_mat < 0.95 then
+            let albedo := colour.mk (← random_float 0.5 1) (← random_float 0.5 1) (← random_float 0.5 1)
+            let fuzz ← random_float 0 0.5
+            let mat := material.metal albedo fuzz
+            world := world.cons $ hittable.sphere center 0.2 mat
+            
+          else
+            let mat := material.dialectric 1.5
+            world := world.cons $ hittable.sphere center 0.2 mat
+            
+        else
+          pure ()
+    let material_ground : material := material.lambertian $ colour.mk 0.5 0.5 0.5
+    world := world.cons $ hittable.sphere (point3.mk (vec3.mk     0  (-1000) (0))) 1000 material_ground
+
+    let material1 : material := material.dialectric $ 1.5
+    world := world.cons $ hittable.sphere (point3.mk (vec3.mk 0 (1) (0))) 1 material1
+    world := world.cons $ hittable.sphere (point3.mk (vec3.mk 0 (3) (0))) 1 material1
+    
+    let material2 : material := material.lambertian $ colour.mk 0.4 0.2 0.1
+    world := world.cons $ hittable.sphere (point3.mk (vec3.mk (-4) (1) (0))) 1 material2
+    world := world.cons $ hittable.sphere (point3.mk (vec3.mk (-4) (3) (0))) 1 material2
+
+    let material3 : material := material.metal (colour.mk 0.7  0.6  0.5) 0.0
+    world := world.cons $ hittable.sphere (point3.mk (vec3.mk (4) (1) (0))) 1 material3
+    world := world.cons $ hittable.sphere (point3.mk (vec3.mk (4) (3) (0))) 1 material3
 
     pure world
 
